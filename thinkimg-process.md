@@ -105,14 +105,52 @@
 
 # <p style="display: flex; align-items: center; gap: 0.5em;"><span style="font-weight:bold; color: white; background-color: lightSeaGreen; padding: 0.5rem 2rem;">WRITE YOUR THINKING PROCESS BELOW.</span><span style="font-weight:bold; color: white; background-color: lightSeaGreen; padding: 0.5rem 0;">&nbsp;</span></p>
 
-<!-- Thinking Process -->
-<!-- 1. Workflow Planning -->
-<!-- 2.1. Board Functions (Hardcoded) -->
-<!-- 2.2. Board Functions (Generated) -->
-<!-- 3. Input Functions -->
-<!-- 4. Movement Functions -->
-<!-- 5. Game Rule Functions -->
-<!-- 6. Game Play Loop -->
+Thinking Process
+1. Workflow Planning
+
+สิ่งที่ต้องทำ
+- เดินออกนอกขอบ
+- ตกหลุม
+- เจอหมวก
+
+ทางโค้ดจะต้องมี
+- player เดิน + - 
+- ตั้งคำสั่ง w a s d
+- เชื่อม array ด้วย string
+- update board ตามช่องที่ player เดิน
+- อัพเดต board ในแต่ละครั้งที่ player เดินไป
+- ใช้ loop ทำให้ board รัน + อัพเดต 
+- ถ้าตกแมพจะเกิด ""
+- ถ้าตกหลุมจะเกิด ""
+- ถ้าเจอหมวกจะเกิด ""
+- ถ้าเป็นคำสั่งอื่นนอกเหนือจากที่กำหนดจะเกิด ""
+
+2.1. Board Functions (Hardcoded)
+
+ฝั่ง map
+- ใช้ board เดิมแล้วเชื่อม array เป็น string ให้ติดกันไม่มี ""[]
+- เก็บ function printBoard กับ console.clear ไว้ แล้วค่อยเพิ่ม loop for of กับ .join("") เพื่อให้เปลี่ยนเป็น string ทีละแถว
+
+ฝั่ง gameplay
+- ทำให้เกมเป็น loop ใช้ while แล้วถ้าเกิดเงื่อนไขอะไรขึ้นค่อย break;
+- ประกาศ newrow/newcol ออกมาเพิ่มให้ใช้งานง่ายขึ้น
+- แล้วใช้ if ว่าจะให้เดินด้วยตัวแปรตัวไหนที่ + ตัวไหน - เช่น "w" row--
+- แล้วก็ใช้ if else กำหนดเงื่อนไขต่อ ถ้าต่ำกว่า 0 = ตกขอบ กับถ้ามากกว่าความยาวของ array กับมากกว่าความยาวของ element = ตกขอบ
+- และก็ถ้าตำแหน่ง row/col ของผู้เล่นไป === hole/hat จะเกิด___
+- เขียน invalid move เพิ่ม (ถ้าเป็นคำนอกเหนือจากที่กำหนดไว้ให้เป็น "invalid")
+- ทุกอันตรงจบด้วย break เพราะถ้าตรงเงื่อนไขจะได้ออกจาก loop
+
+update player position
+- ทำให้ playerRow playerCol เป็น EMPTY จะได้ลบออกจากตำแหน่งเดิม แล้วเปลี่ยนค่าให้เป็นตำแหน่งใหม่ ใช้ playerCol = newCol จะได้เปลี่ยนค่าให้เป็นอันเดียวกับ newCol แล้วค่อยให้ตำแหน่งใหม่ = PLAYER (*)
+
+2.2. Board Functions (Generated)
+
+
+
+3. Input Functions
+4. Movement Functions
+5. Game Rule Functions
+6. Game Play Loop
 
 [Back to Table of Contents](#table-of-contents)
 
