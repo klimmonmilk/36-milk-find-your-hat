@@ -143,6 +143,7 @@ Thinking Process
 update player position
 - ทำให้ playerRow playerCol เป็น EMPTY จะได้ลบออกจากตำแหน่งเดิม แล้วเปลี่ยนค่าให้เป็นตำแหน่งใหม่ ใช้ playerCol = newCol จะได้เปลี่ยนค่าให้เป็นอันเดียวกับ newCol แล้วค่อยให้ตำแหน่งใหม่ = PLAYER (*)
 
+
 2.2. Board Functions (Generated)
 
 
