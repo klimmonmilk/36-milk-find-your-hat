@@ -137,7 +137,6 @@ Thinking Process
 - แล้วใช้ if ว่าจะให้เดินด้วยตัวแปรตัวไหนที่ + ตัวไหน - เช่น "w" row--
 - แล้วก็ใช้ if else กำหนดเงื่อนไขต่อ ถ้าต่ำกว่า 0 = ตกขอบ กับถ้ามากกว่าความยาวของ array กับมากกว่าความยาวของ element = ตกขอบ
 - และก็ถ้าตำแหน่ง row/col ของผู้เล่นไป === hole/hat จะเกิด___
-- เขียน invalid move เพิ่ม (ถ้าเป็นคำนอกเหนือจากที่กำหนดไว้ให้เป็น "invalid")
 - ทุกอันตรงจบด้วย break เพราะถ้าตรงเงื่อนไขจะได้ออกจาก loop
 
 update player position
@@ -149,7 +148,13 @@ update player position
 
 
 3. Input Functions
+
+input คือตัวนี้ const input:string = prompt("Which way? (w/a/s/d): "); และถ้าต้องการระบุว่าให้ wasd เป็นตัวไปทางซ้ายทางขวาก็ใช้ให้ = playerRow/playerCol ได้ แต่ว่าของหนูอยากทำเผื่ออัพเดตแมพด้วย เลยจะสร้าง var ใหม่ คือ newRow กับ newCol แล้วก็จะกำหนดว่า ปุ่ม w คือขึ้น ก็คือ newRow-- และปุ่มอื่นๆก็เหมือนกัน
+
 4. Movement Functions
+
+พอรับ input มาแล้วก็มาใส่เงื่อนไขว่า ถ้า row/col น้อยกว่า 0 = อยู่นอกเขต ก็จะ = lose แล้ว break ออก
+
 5. Game Rule Functions
 6. Game Play Loop
 

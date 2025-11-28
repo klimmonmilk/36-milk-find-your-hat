@@ -47,7 +47,7 @@ function printBoard(board: Board): void {
 
 while (true) {
 
-printBoard(board);
+printBoard(board);	
 const input:string = prompt("Which way? (w/a/s/d): ");	
 // console.log(input);
 
@@ -72,9 +72,6 @@ if  (newRow < 0 || newRow >= board.length || newCol < 0 || newCol >= board[0].le
 } else if
 	(board[newRow][newCol] === HAT) {
 	console.log("You found the hat! You win!");
-	break;
-} else {
-	console.log("Invalid Move");
 	break;
 }
 
