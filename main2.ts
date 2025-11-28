@@ -19,19 +19,24 @@ const HAT: Tile = "^";
 // 	[EMPTY, HAT, EMPTY],
 // ];
 
-function generateBoard(rows: number, cols: number) {
-  const field = [];
+function generateBoard(rows: number, cols: number, holePercentage:number) {
+  const board = [];
 
   for (let r = 0; r < rows; r++) {
     const row: Tile[] = [];
     for (let c = 0; c < cols; c++) {
+      const randomValue = Math.random(); 
+      if (randomValue < holePercentage) {
+        row.push(HOLE);
+      } else {
       row.push(EMPTY);
+      }
     }
-    field.push(row);
+    board.push(row);
   }
-
-  return field;
+  return board;
 }
+
 
 while (true) {
 //  Game state 
@@ -48,7 +53,7 @@ function printBoard(board: Board): void {
 }
 
 // Game play loop
-let board: Board = generateBoard(5, 5);
+let board: Board = generateBoard(10, 10, 0.1);
 
 
 printBoard(board);

@@ -45,44 +45,43 @@ function printBoard(board: Board): void {
 
 // Game play loop
 
-while (true) {
+while (playing) {
+	printBoard(board);	
+	const input:string = prompt("Which way? (w/a/s/d): ");	
+	// console.log(input);
 
-printBoard(board);	
-const input:string = prompt("Which way? (w/a/s/d): ");	
-// console.log(input);
+	// สร้างตัวแปรตำแหน่ง ดึงจาก game state มา
+	let newRow = playerRow;
+	let newCol = playerCol;
 
-
-// สร้างตัวแปรตำแหน่ง ดึงจาก game state มา
-let newRow = playerRow;
-let newCol = playerCol;
-
-if (input === "w") newRow--;
-if (input === "s") newRow++;
-if (input === "a") newCol--;	
-if (input === "d") newCol++;
-
-// กำหนดเงื่อนไขแต่ละอัน ถ้า... จะเกิดอะไรขึ้นด้วย if else
-if  (newRow < 0 || newRow >= board.length || newCol < 0 || newCol >= board[0].length) {
-	console.log("Out of bounds! You lose!");
-	break;
-} else if 
-	(board[newRow][newCol] === HOLE) {
-	console.log("You fell into a hole! Game over!");
-	break;
-} else if
-	(board[newRow][newCol] === HAT) {
-	console.log("You found the hat! You win!");
-	break;
-}
-
-// update board กับ player position จะได้เป็น *
-board[playerRow][playerCol] = EMPTY;
-
-playerCol = newCol;
-playerRow = newRow;
-
-board[playerRow][playerCol] = PLAYER;
+	if (input === "w") newRow--;
+	if (input === "s") newRow++;
+	if (input === "a") newCol--;	
+	if (input === "d") newCol++;
 
 
-printBoard(board);
+	// กำหนดเงื่อนไขแต่ละอัน ถ้า... จะเกิดอะไรขึ้นด้วย if else
+	if  (newRow < 0 || newRow >= board.length || newCol < 0 || newCol >= board[0].length) {
+		console.log("Out of bounds! You lose!");
+		playing = false;
+	} else if 
+		(board[newRow][newCol] === HOLE) {
+		console.log("You fell into a hole! Game over!");
+		playing = false;
+	} else if
+		(board[newRow][newCol] === HAT) {
+		console.log("You found the hat! You win!");
+		playing = false;
+	} else {
+			// update board กับ player position จะได้เป็น *
+		board[playerRow][playerCol] = EMPTY;
+
+		playerCol = newCol;
+		playerRow = newRow;
+
+		board[playerRow][playerCol] = PLAYER;
+	}
+
+
+	// printBoard(board);
 }

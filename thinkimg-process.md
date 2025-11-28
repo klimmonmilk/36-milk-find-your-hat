@@ -132,7 +132,7 @@ Thinking Process
 - เก็บ function printBoard กับ console.clear ไว้ แล้วค่อยเพิ่ม loop for of กับ .join("") เพื่อให้เปลี่ยนเป็น string ทีละแถว
 
 ฝั่ง gameplay
-- ทำให้เกมเป็น loop ใช้ while แล้วถ้าเกิดเงื่อนไขอะไรขึ้นค่อย break;
+- ทำให้เกมเป็น loop ใช้ while (playing) แล้วถ้าเกิดเงื่อนไขอะไรขึ้นค่อย เปลี่ยน playing เป็น false
 - ประกาศ newrow/newcol ออกมาเพิ่มให้ใช้งานง่ายขึ้น
 - แล้วใช้ if ว่าจะให้เดินด้วยตัวแปรตัวไหนที่ + ตัวไหน - เช่น "w" row--
 - แล้วก็ใช้ if else กำหนดเงื่อนไขต่อ ถ้าต่ำกว่า 0 = ตกขอบ กับถ้ามากกว่าความยาวของ array กับมากกว่าความยาวของ element = ตกขอบ
@@ -145,7 +145,9 @@ update player position
 
 2.2. Board Functions (Generated)
 
-
+อยู่ใน main2.ts ใช้วิธีรันด้วย tsx main2.ts
+- สร้าง function generate board ที่มี parameter เป็น rows cols holePercentage ละให้ทั้ง 3 มีค่าเป็น number
+แล้วก็ประกาศ board เป็น array ว่าง แล้วก็เขียน loop ว่าถ้า r น้อยกว่าค่า rows ให้สร้าง array ว่าง จากนั้นใช้ math.random สุ่มเลขตั้งแต่ 0-1 ว่าถ้ามีค่าน้อยกว่า holePercentage จะ push หลุมเข้า array แต่ถ้าสุ่มได้ค่ามากกวว่าก็ให้เป็น empty จากนั้นก็ push row ที่สร้างเสร็จเข้าไปใน board แล้วก็วนลูป r rows จนกว่าจะเป็นเท็จแล้วให้ return ออกมาเป็น board
 
 3. Input Functions
 
@@ -153,10 +155,17 @@ input คือตัวนี้ const input:string = prompt("Which way? (w/a/s
 
 4. Movement Functions
 
-พอรับ input มาแล้วก็มาใส่เงื่อนไขว่า ถ้า row/col น้อยกว่า 0 = อยู่นอกเขต ก็จะ = lose แล้ว break ออก
+พอรับ input มาแล้วก็มาใส่เงื่อนไขว่า ถ้า row/col น้อยกว่า 0 = อยู่นอกเขต ก็จะ = lose แล้ว break; ออก แล้วก็ใช้ else if มาดูว่า newCol/newRow ถ้าตอนไหนที่มีค่า = HAT, HOLE ก็จะ console.log ว่าตกหลุม/เจอหมวก แล้วก็ break; ออกลูปเหมือนเดิม
 
 5. Game Rule Functions
+
+เดินตก = แพ้(ตก)
+เดินเข้าหลุม = แพ้(ตกหลุม)
+เดินชนหมวก = ชนะ(เจอหมวก)
+
 6. Game Play Loop
+
+ใช้ while (playing) คลุมตั้งแต่ printboard-if else อันสุดท้าย เพราะเมื่อ playing เป็น false จะได้ไปหยุดที่ while (playing)
 
 [Back to Table of Contents](#table-of-contents)
 
